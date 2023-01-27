@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'ui/screens/pokemon_list/pokemon_list_screen.dart';
+
+import '../ui/screens/pokemon_list/pokemon_list_screen.dart';
+import 'config.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -9,7 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bacu Pokedex',
+      title: Config.appName,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
