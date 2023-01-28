@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/ui/widgets/atoms/pokemon_image_widget.dart';
+import 'package:pokedex/ui/widgets/atoms/pokemon_name_widget.dart';
+import 'package:pokedex/ui/widgets/atoms/pokemon_type_widget.dart';
+import 'package:pokedex/ui/widgets/molecules/pokemon_basic_info_widget.dart';
+import 'package:pokedex/ui/widgets/organism/basic_appbar.dart';
 import '../../../domain/entities/pokemon_entity.dart';
 
 class PokemonDetailScreen extends StatelessWidget {
@@ -11,6 +16,61 @@ class PokemonDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    final mediaQuery = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: BasicAppbar(
+        title: pokemonEntity.name,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(25),
+          child: Column(
+            children: [
+              PokemonNameWidget(
+                name: pokemonEntity.name,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  PokemonImageWidget(
+                    url: pokemonEntity.imageUrl,
+                    mediaQuery: mediaQuery,
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        PokemonTypeWidget(
+                          types: pokemonEntity.types,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          'datadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadata',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              PokemonBasicInfoWidget(
+                id: pokemonEntity.id,
+                maxHP: pokemonEntity.maxHP,
+                maxCP: pokemonEntity.maxCP,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
