@@ -1,7 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_shake_animated/flutter_shake_animated.dart';
-import 'package:skeletons/skeletons.dart';
+import 'package:pokedex/ui/widgets/molecules/pokemon_basic_info_widget.dart';
+import 'package:pokedex/ui/widgets/atoms/pokemon_image_widget.dart';
+import 'package:pokedex/ui/widgets/atoms/pokemon_name_widget.dart';
+import 'package:pokedex/ui/widgets/atoms/pokemon_type_widget.dart';
 
 import '../../../../domain/entities/pokemon_entity.dart';
 import '../../../widgets/tokens/app_colors.dart';
@@ -41,19 +42,28 @@ class PokemonCard extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              _imageWidget(
-                mediaQuery,
+              PokemonImageWidget(
+                url: pokemonEntity.imageUrl,
+                mediaQuery: mediaQuery,
               ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      _nameWidget(),
+                      PokemonNameWidget(
+                        name: pokemonEntity.name,
+                      ),
                       space,
-                      _typeWidget(),
+                      PokemonTypeWidget(
+                        types: pokemonEntity.types,
+                      ),
                       space,
-                      _basicInfoWidget(),
+                      PokemonBasicInfoWidget(
+                        id: pokemonEntity.id,
+                        maxHP: pokemonEntity.maxHP,
+                        maxCP: pokemonEntity.maxCP,
+                      ),
                       space,
                       _extraInfoWidget(),
                     ],
@@ -63,109 +73,6 @@ class PokemonCard extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _imageWidget(
-    Size mediaQuery,
-  ) {
-    double size = mediaQuery.width / 4;
-    return ShakeWidget(
-      duration: const Duration(seconds: 10),
-      shakeConstant: ShakeSlowConstant1(),
-      autoPlay: true,
-      enableWebMouseHover: true,
-      child: CachedNetworkImage(
-        imageUrl: pokemonEntity.imageUrl,
-        placeholder: (context, url) => const SkeletonAvatar(),
-        height: size,
-        width: size,
-      ),
-    );
-  }
-
-  Widget _nameWidget() {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(
-        pokemonEntity.name.toUpperCase(),
-        style: AppFonts.title,
-        textAlign: TextAlign.left,
-      ),
-    );
-  }
-
-  Widget _typeWidget() {
-    String typeText = '';
-    for (String item in pokemonEntity.types) {
-      typeText += ' / $item';
-    }
-    typeText = typeText.substring(
-      3,
-      typeText.length,
-    );
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(
-        typeText.toUpperCase(),
-        style: AppFonts.subtitle,
-      ),
-    );
-  }
-
-  Widget _basicInfoWidget() {
-    return Container(
-      padding: const EdgeInsets.only(
-        top: 3,
-        bottom: 3,
-        left: 10,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.background,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            '#${pokemonEntity.id}',
-            style: AppFonts.subtitle,
-          ),
-          Text(
-            'MAX HP',
-            style: AppFonts.body,
-          ),
-          _circleText(
-            AppColors.secondary,
-            '${pokemonEntity.maxHP} hp',
-          ),
-          Text(
-            'MAX CP',
-            style: AppFonts.body,
-          ),
-          _circleText(
-            AppColors.tertiary,
-            'cp ${pokemonEntity.maxCP}',
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _circleText(
-    Color color,
-    String text,
-  ) {
-    return Container(
-      padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        text,
-        style: AppFonts.subtitle,
       ),
     );
   }
