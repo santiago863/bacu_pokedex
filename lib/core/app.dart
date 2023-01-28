@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex/ui/widgets/tokens/app_colors.dart';
 import 'routes.dart';
 import '../cubit/pokedex_cubit.dart';
 
@@ -17,7 +18,13 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: Config.appName,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          inputDecorationTheme: InputDecorationTheme(
+            filled: true,
+            fillColor: AppColors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
         ),
         initialRoute: Routes.initialRoute,
         routes: Routes.allRoutes,
