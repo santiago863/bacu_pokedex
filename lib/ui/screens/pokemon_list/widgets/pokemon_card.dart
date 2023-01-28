@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:pokedex/domain/entities/pokemon_entity.dart';
 import 'package:pokedex/ui/widgets/tokens/app_colors.dart';
 import 'package:pokedex/ui/widgets/tokens/app_fonts.dart';
@@ -62,11 +63,17 @@ class PokemonCard extends StatelessWidget {
     Size mediaQuery,
   ) {
     double size = mediaQuery.width / 4;
-    return CachedNetworkImage(
-      imageUrl: pokemonEntity.imageUrl,
-      placeholder: (context, url) => const SkeletonAvatar(),
-      height: size,
-      width: size,
+    return ShakeWidget(
+      duration: const Duration(seconds: 10),
+      shakeConstant: ShakeSlowConstant1(),
+      autoPlay: true,
+      enableWebMouseHover: true,
+      child: CachedNetworkImage(
+        imageUrl: pokemonEntity.imageUrl,
+        placeholder: (context, url) => const SkeletonAvatar(),
+        height: size,
+        width: size,
+      ),
     );
   }
 
@@ -149,7 +156,7 @@ class PokemonCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        '${pokemonEntity.maxHP} hp',
+        text,
         style: AppFonts.subtitle,
       ),
     );

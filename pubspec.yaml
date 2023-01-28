@@ -14,6 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   dio: ^4.0.6
   flutter_bloc: ^8.1.1
+  flutter_shake_animated: ^0.0.5
   get_it: ^7.2.0
   google_fonts: ^4.0.1
   skeletons: ^0.0.3
