@@ -9,11 +9,11 @@ abstract class AppFonts {
   );
   static final TextStyle subtitle = GoogleFonts.righteous(
     color: AppColors.black,
-    fontSize: 20,
+    fontSize: 13,
   );
   static final TextStyle body = GoogleFonts.comfortaa(
     color: AppColors.grey,
     fontWeight: FontWeight.bold,
-    fontSize: 15,
+    fontSize: 10,
   );
 }

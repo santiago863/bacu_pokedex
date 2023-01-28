@@ -13,7 +13,7 @@ class PokemonModel implements BaseModel<PokemonEntity> {
       imageUrl: json['sprites']['other']['official-artwork']['front_default'],
       types: json['types'].map((item) => item['type']['name']).toList(),
       maxHP: json['stats'][0]['base_stat'],
-      maxCP: json['stats'][0]['base_stat'],
+      maxCP: json['stats'][1]['base_stat'],
       generation: 0,
       candy: 'x',
       height: json['height'],
