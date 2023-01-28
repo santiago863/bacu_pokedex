@@ -1,5 +1,5 @@
-import 'base_model.dart';
 import '../../domain/entities/pokemon_entity.dart';
+import 'base_model.dart';
 
 class PokemonModel implements BaseModel<PokemonEntity> {
   @override

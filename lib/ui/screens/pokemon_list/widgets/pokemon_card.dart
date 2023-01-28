@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shake_animated/flutter_shake_animated.dart';
-import 'package:pokedex/domain/entities/pokemon_entity.dart';
-import 'package:pokedex/ui/widgets/tokens/app_colors.dart';
-import 'package:pokedex/ui/widgets/tokens/app_fonts.dart';
 import 'package:skeletons/skeletons.dart';
+
+import '../../../../domain/entities/pokemon_entity.dart';
+import '../../../widgets/tokens/app_colors.dart';
+import '../../../widgets/tokens/app_fonts.dart';
+import '../../pokemon/pokemon_detail_screen.dart';
 
 class PokemonCard extends StatelessWidget {
   final PokemonEntity pokemonEntity;
@@ -19,41 +21,47 @@ class PokemonCard extends StatelessWidget {
     const space = SizedBox(
       height: 8,
     );
-    return Card(
-      elevation: 5,
-      shape: RoundedRectangleBorder(
-        side: const BorderSide(
-          color: AppColors.grey,
-          width: 1,
-        ),
-        borderRadius: BorderRadius.circular(10),
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pushNamed(
+        PokemonDetailScreen.route,
+        arguments: pokemonEntity,
       ),
-      margin: const EdgeInsets.all(10),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            _imageWidget(
-              mediaQuery,
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    _nameWidget(),
-                    space,
-                    _typeWidget(),
-                    space,
-                    _basicInfoWidget(),
-                    space,
-                    _extraInfoWidget(),
-                  ],
+      child: Card(
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(
+            color: AppColors.grey,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        margin: const EdgeInsets.all(10),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              _imageWidget(
+                mediaQuery,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      _nameWidget(),
+                      space,
+                      _typeWidget(),
+                      space,
+                      _basicInfoWidget(),
+                      space,
+                      _extraInfoWidget(),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

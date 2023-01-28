@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/cubit/pokedex_cubit.dart';
+import 'routes.dart';
+import '../cubit/pokedex_cubit.dart';
 
-import '../ui/screens/pokemon_list/pokemon_list_screen.dart';
 import 'config.dart';
 
 class App extends StatelessWidget {
@@ -19,7 +19,8 @@ class App extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const PokemonListScreen(),
+        initialRoute: Routes.initialRoute,
+        routes: Routes.allRoutes,
       ),
     );
   }

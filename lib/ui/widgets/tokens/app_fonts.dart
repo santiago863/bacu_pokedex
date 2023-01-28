@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pokedex/ui/widgets/tokens/app_colors.dart';
+
+import 'app_colors.dart';
 
 abstract class AppFonts {
   static final TextStyle title = GoogleFonts.bebasNeue(

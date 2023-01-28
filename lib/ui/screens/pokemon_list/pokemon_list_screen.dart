@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/cubit/pokedex_cubit.dart';
-import 'package:pokedex/ui/screens/pokemon_list/widgets/pokemon_card.dart';
+import '../../../cubit/pokedex_cubit.dart';
+import 'widgets/pokemon_card.dart';
 
 class PokemonListScreen extends StatefulWidget {
+  static const String route = '/pokemon-list';
   const PokemonListScreen({
     super.key,
   });
