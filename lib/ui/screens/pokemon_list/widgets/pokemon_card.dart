@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/domain/entities/pokemon_entity.dart';
+import 'package:pokedex/ui/widgets/tokens/app_fonts.dart';
+import 'package:skeletons/skeletons.dart';
 
 class PokemonCard extends StatelessWidget {
   final PokemonEntity pokemonEntity;
@@ -35,8 +38,9 @@ class PokemonCard extends StatelessWidget {
     Size mediaQuery,
   ) {
     double size = mediaQuery.width / 3;
-    return Image.network(
-      pokemonEntity.imageUrl,
+    return CachedNetworkImage(
+      imageUrl: pokemonEntity.imageUrl,
+      placeholder: (context, url) => const SkeletonAvatar(),
       height: size,
       width: size,
     );
@@ -45,6 +49,7 @@ class PokemonCard extends StatelessWidget {
   _nameWidget() {
     return Text(
       pokemonEntity.name,
+      style: AppFonts.title,
     );
   }
 
@@ -52,6 +57,7 @@ class PokemonCard extends StatelessWidget {
     String typeText = pokemonEntity.types[0];
     return Text(
       typeText,
+      style: AppFonts.subtitle,
     );
   }
 
@@ -61,6 +67,7 @@ class PokemonCard extends StatelessWidget {
       children: [
         Text(
           pokemonEntity.id.toString(),
+          style: AppFonts.body,
         ),
         Text(
           pokemonEntity.id.toString(),
@@ -78,35 +85,35 @@ class PokemonCard extends StatelessWidget {
     );
   }
 
-  _basicInfoItem(
-    String title,
-    int value,
-  ) {
-    Expanded(
-      child: Row(
-        children: [
-          Text(
-            title,
-          ),
-          // Text(
-          //   value.toString(),
-          // ),
-        ],
-      ),
-    );
-  }
+  // _basicInfoItem(
+  //   String title,
+  //   int value,
+  // ) {
+  //   Expanded(
+  //     child: Row(
+  //       children: [
+  //         Text(
+  //           title,
+  //         ),
+  //         // Text(
+  //         //   value.toString(),
+  //         // ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   _extraInfoWidget() {
     return Column(
       children: [
         Row(
-          children: [
+          children: const [
             Text('data'),
             Text('data'),
           ],
         ),
         Row(
-          children: [
+          children: const [
             Text('data'),
             Text('data'),
           ],
