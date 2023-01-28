@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex/ui/screens/pokemon_list/widgets/pokemon_list_appbar.dart';
 import '../../../cubit/pokedex_cubit.dart';
 import 'widgets/pokemon_card.dart';
 
@@ -17,6 +18,7 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const PokemonListAppbar(),
       body: BlocBuilder<PokedexCubit, PokedexState>(
         builder: (context, state) {
           return ListView.builder(

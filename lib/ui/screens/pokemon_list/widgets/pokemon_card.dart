@@ -6,7 +6,7 @@ import 'package:skeletons/skeletons.dart';
 import '../../../../domain/entities/pokemon_entity.dart';
 import '../../../widgets/tokens/app_colors.dart';
 import '../../../widgets/tokens/app_fonts.dart';
-import '../../pokemon/pokemon_detail_screen.dart';
+import '../../pokemon_detail/pokemon_detail_screen.dart';
 
 class PokemonCard extends StatelessWidget {
   final PokemonEntity pokemonEntity;
