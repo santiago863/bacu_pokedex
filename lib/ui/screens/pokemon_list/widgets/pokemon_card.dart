@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/ui/widgets/molecules/pokemon_basic_info_widget.dart';
-import 'package:pokedex/ui/widgets/atoms/pokemon_image_widget.dart';
-import 'package:pokedex/ui/widgets/atoms/pokemon_name_widget.dart';
-import 'package:pokedex/ui/widgets/atoms/pokemon_type_widget.dart';
+import '../../../widgets/molecules/pokemon_basic_info_widget.dart';
+import '../../../widgets/atoms/pokemon_image_widget.dart';
+import '../../../widgets/atoms/pokemon_name_widget.dart';
+import '../../../widgets/atoms/pokemon_type_widget.dart';
 
 import '../../../../domain/entities/pokemon_entity.dart';
 import '../../../widgets/tokens/app_colors.dart';

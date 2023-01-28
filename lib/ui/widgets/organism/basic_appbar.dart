@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/ui/widgets/tokens/app_colors.dart';
-import 'package:pokedex/ui/widgets/tokens/app_fonts.dart';
+import '../tokens/app_colors.dart';
+import '../tokens/app_fonts.dart';
 
 class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;

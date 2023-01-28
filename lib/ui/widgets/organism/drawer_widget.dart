@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/core/config.dart';
-import 'package:pokedex/ui/screens/pokemon_search/pokemon_search_screen.dart';
-import 'package:pokedex/ui/widgets/atoms/drawer_tile.dart';
-import 'package:pokedex/ui/widgets/tokens/app_colors.dart';
-import 'package:pokedex/ui/widgets/tokens/app_fonts.dart';
+import '../../../core/config.dart';
+import '../../screens/pokemon_search/pokemon_search_screen.dart';
+import '../atoms/drawer_tile.dart';
+import '../tokens/app_colors.dart';
+import '../tokens/app_fonts.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({

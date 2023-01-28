@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:get_it/get_it.dart';
+
 import '../core/config.dart';
 import '../data/repositories/pokedex_repository_impl.dart';
-
 import '../domain/entities/pokemon_entity.dart';
 
 part 'pokedex_state.dart';

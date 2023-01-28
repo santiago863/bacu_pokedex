@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/ui/screens/pokemon_search/widgets/search_appbar.dart';
+import 'widgets/search_appbar.dart';
 
 class PokemonSearchScreen extends StatelessWidget {
   static const String route = '/pokemon-search';

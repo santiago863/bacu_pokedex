@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/ui/widgets/tokens/app_colors.dart';
-import 'package:pokedex/ui/widgets/tokens/app_fonts.dart';
+import '../../../widgets/tokens/app_colors.dart';
+import '../../../widgets/tokens/app_fonts.dart';
 
 class SearchAppbar extends StatelessWidget implements PreferredSizeWidget {
   static const double _height = 130;

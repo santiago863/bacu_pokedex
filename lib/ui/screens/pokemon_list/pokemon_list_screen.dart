@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:pokedex/domain/entities/pokemon_entity.dart';
-import 'package:pokedex/ui/screens/pokemon_list/widgets/pokemon_list_appbar.dart';
-import 'package:pokedex/ui/widgets/organism/drawer_widget.dart';
+import '../../../domain/entities/pokemon_entity.dart';
+import 'widgets/pokemon_list_appbar.dart';
+import '../../widgets/organism/drawer_widget.dart';
 import '../../../cubit/pokedex_cubit.dart';
 import 'widgets/pokemon_card.dart';
 

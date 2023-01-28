@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/core/config.dart';
-import 'package:pokedex/ui/screens/pokemon_search/pokemon_search_screen.dart';
-import 'package:pokedex/ui/widgets/tokens/app_colors.dart';
-import 'package:pokedex/ui/widgets/tokens/app_fonts.dart';
+import '../../../../core/config.dart';
+import '../../pokemon_search/pokemon_search_screen.dart';
+import '../../../widgets/tokens/app_colors.dart';
+import '../../../widgets/tokens/app_fonts.dart';
 
 class PokemonListAppbar extends StatelessWidget implements PreferredSizeWidget {
   const PokemonListAppbar({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/ui/widgets/tokens/app_colors.dart';
+import '../ui/widgets/tokens/app_colors.dart';
 import 'routes.dart';
 import '../cubit/pokedex_cubit.dart';
 
