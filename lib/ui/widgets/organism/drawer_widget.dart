@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/ui/screens/pokemon_compare/pokemon_compare_screen.dart';
 
 import '../../../core/config.dart';
 import '../../screens/pokemon_search/pokemon_search_screen.dart';
@@ -57,6 +58,15 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushNamed(
                 PokemonSearchScreen.route,
+              );
+            },
+          ),
+          DrawerTile(
+            icon: Icons.compare,
+            title: 'Compare Pokemons',
+            onTap: () {
+              Navigator.of(context).pushNamed(
+                PokemonCompareScreen.route,
               );
             },
           ),

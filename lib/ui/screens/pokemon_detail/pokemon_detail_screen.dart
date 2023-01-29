@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/ui/screens/pokemon_detail/widgets/compare_button.dart';
 import 'package:pokedex/ui/screens/pokemon_detail/widgets/pokemon_detail_card.dart';
 import 'package:pokedex/ui/screens/pokemon_detail/widgets/pokemon_detail_item.dart';
 import 'package:pokedex/ui/widgets/tokens/app_fonts.dart';
 import 'package:pokedex/utils/extensions/list_extensions.dart';
-import 'package:pokedex/utils/extensions/string_extension.dart';
 
 import '../../../domain/entities/pokemon_entity.dart';
 import '../../widgets/atoms/pokemon_image_widget.dart';
@@ -11,7 +11,6 @@ import '../../widgets/atoms/pokemon_name_widget.dart';
 import '../../widgets/atoms/pokemon_type_widget.dart';
 import '../../widgets/molecules/pokemon_basic_info_widget.dart';
 import '../../widgets/organism/basic_appbar.dart';
-import '../../widgets/tokens/app_colors.dart';
 
 class PokemonDetailScreen extends StatelessWidget {
   static const String route = '/pokemon-detail';
@@ -79,6 +78,12 @@ class PokemonDetailScreen extends StatelessWidget {
                 maxHP: pokemonEntity.stamina,
                 maxCP: pokemonEntity.maxAttack,
                 fontSize: 15,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CompareButton(
+                pokemonEntity: pokemonEntity,
               ),
               _basicInfo(),
               _stats(),

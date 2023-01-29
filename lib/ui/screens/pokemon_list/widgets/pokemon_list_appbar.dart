@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/ui/screens/pokemon_compare/pokemon_compare_screen.dart';
 import '../../../../core/config.dart';
 import '../../pokemon_search/pokemon_search_screen.dart';
 import '../../../widgets/tokens/app_colors.dart';
@@ -29,6 +30,15 @@ class PokemonListAppbar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
+        IconButton(
+          onPressed: () => Navigator.of(context).pushNamed(
+            PokemonCompareScreen.route,
+          ),
+          icon: const Icon(
+            Icons.compare,
+            color: AppColors.black,
+          ),
+        ),
         IconButton(
           onPressed: () => Navigator.of(context).pushNamed(
             PokemonSearchScreen.route,
