@@ -24,18 +24,14 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
       appBar: const PokemonListAppbar(),
       body: BlocBuilder<PokedexCubit, PokedexState>(
         builder: (context, state) {
-          if (state.status == PokedexStatus.loading) {
-            return const CircularProgressIndicator();
-          } else {
-            return ListView.builder(
-              itemCount: state.pokemons.length,
-              itemBuilder: (context, index) {
-                return PokemonCard(
-                  pokemonEntity: state.pokemons[index],
-                );
-              },
-            );
-          }
+          return ListView.builder(
+            itemCount: state.pokemons.length,
+            itemBuilder: (context, index) {
+              return PokemonCard(
+                pokemonEntity: state.pokemons[index],
+              );
+            },
+          );
         },
       ),
     );

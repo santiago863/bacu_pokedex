@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -14,8 +16,36 @@ class PokedexCubit extends Cubit<PokedexState> {
         );
 
   final getIt = GetIt.instance;
+  // late final Timer timer;
+
+  // void initCubit() {
+  // timer = Timer.periodic(
+  //   const Duration(
+  //     seconds: 10,
+  //   ),
+  //   (timer) async => await fetchPokedex(),
+  // );
+  // }
 
   Future<void> fetchPokedex() async {
+    print('Consulto: offset = ${state.offset}');
+    if (state.timer == null) {
+      print('Se creo el timer');
+      emit(
+        state.copyWith(
+          timer: Timer.periodic(
+            const Duration(
+              seconds: 5,
+            ),
+            (timer) async {
+              // print('offset = ${state.offset}');
+              // print('pokemons = ${state.pokemons.length}');
+              await fetchPokedex();
+            },
+          ),
+        ),
+      );
+    }
     emit(
       state.copyWith(
         status: PokedexStatus.loading,
@@ -27,12 +57,13 @@ class PokedexCubit extends Cubit<PokedexState> {
       offset: state.offset,
     );
     final List<PokemonEntity> pokemons = [];
-    pokemons.addAll(state.pokemons + newPokemons);
+    pokemons.addAll(state.pokemons);
+    pokemons.addAll(newPokemons);
     emit(
       state.copyWith(
         status: PokedexStatus.success,
         pokemons: pokemons,
-        offset: state.pokemons.length,
+        offset: pokemons.length,
       ),
     );
   }

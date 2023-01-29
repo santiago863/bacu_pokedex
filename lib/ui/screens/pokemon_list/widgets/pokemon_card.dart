@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex/core/cubit/pokedex_cubit.dart';
 
 import '../../../../domain/entities/pokemon_entity.dart';
 import '../../../widgets/atoms/pokemon_image_widget.dart';
@@ -22,58 +24,64 @@ class PokemonCard extends StatelessWidget {
     const space = SizedBox(
       height: 8,
     );
-    return GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed(
-        PokemonDetailScreen.route,
-        arguments: pokemonEntity,
-      ),
-      child: Card(
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(
-            color: AppColors.grey,
-            width: 1,
-          ),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        margin: const EdgeInsets.all(10),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              PokemonImageWidget(
-                url: pokemonEntity.imageUrl,
-                mediaQuery: mediaQuery,
+    return BlocBuilder<PokedexCubit, PokedexState>(
+      builder: (context, state) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              PokemonDetailScreen.route,
+              arguments: pokemonEntity,
+            );
+          },
+          child: Card(
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(
+                color: AppColors.grey,
+                width: 1,
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      PokemonNameWidget(
-                        name: pokemonEntity.name,
-                      ),
-                      space,
-                      PokemonTypeWidget(
-                        types: pokemonEntity.types,
-                      ),
-                      space,
-                      PokemonBasicInfoWidget(
-                        id: pokemonEntity.id,
-                        maxHP: pokemonEntity.stamina,
-                        maxCP: pokemonEntity.maxAttack,
-                      ),
-                      space,
-                      _extraInfoWidget(),
-                    ],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            margin: const EdgeInsets.all(10),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  PokemonImageWidget(
+                    url: pokemonEntity.imageUrl,
+                    mediaQuery: mediaQuery,
                   ),
-                ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          PokemonNameWidget(
+                            name: pokemonEntity.name,
+                          ),
+                          space,
+                          PokemonTypeWidget(
+                            types: pokemonEntity.types,
+                          ),
+                          space,
+                          PokemonBasicInfoWidget(
+                            id: pokemonEntity.id,
+                            maxHP: pokemonEntity.stamina,
+                            maxCP: pokemonEntity.maxAttack,
+                          ),
+                          space,
+                          _extraInfoWidget(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

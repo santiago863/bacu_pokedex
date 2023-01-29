@@ -67,7 +67,7 @@ class PokedexService implements PokedexRepository {
       description: json['flavor_text_entries'][13]['flavor_text'],
       color: json['color']['name'],
       captureRate: json['capture_rate'],
-      foundIn: json['habitat']['name'],
+      foundIn: json['habitat'] != null ? json['habitat']['name'] : 'N/A',
       shape: json['shape']['name'],
       baby: json['is_baby'],
     );
@@ -82,15 +82,17 @@ class PokedexService implements PokedexRepository {
     );
     Map<String, dynamic> json = response.data;
     List<dynamic> evolves = [];
-    var evolutionItem = json['chain']['evolves_to'][0];
-    while (true) {
-      evolves.add(
-        evolutionItem['species']['name'],
-      );
-      if (evolutionItem['evolves_to'].length > 0) {
-        evolutionItem = evolutionItem['evolves_to'][0];
-      } else {
-        break;
+    if (json['chain']['evolves_to'].length > 0) {
+      var evolutionItem = json['chain']['evolves_to'][0];
+      while (true) {
+        evolves.add(
+          evolutionItem['species']['name'],
+        );
+        if (evolutionItem['evolves_to'].length > 0) {
+          evolutionItem = evolutionItem['evolves_to'][0];
+        } else {
+          break;
+        }
       }
     }
     return pokemonModel.copyWith(
