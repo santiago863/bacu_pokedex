@@ -25,8 +25,9 @@ class PokedexCubit extends Cubit<PokedexState> {
           seconds: 5,
         ),
         (timer) async {
-          print('offset = ${state.offset}');
-          await fetchPokedex();
+          if (state.offset != 0) {
+            await fetchPokedex();
+          }
         },
       );
     } else {
@@ -50,7 +51,14 @@ class PokedexCubit extends Cubit<PokedexState> {
       (l) => null,
       (r) {
         pokemons.addAll(r);
-        pokemons = pokemons.toSet().toList();
+        final set = <String>{};
+        pokemons = pokemons
+            .where(
+              (pokemon) => set.add(
+                pokemon.name.toString(),
+              ),
+            )
+            .toList();
         emit(
           state.copyWith(
             status: PokedexStatus.success,
