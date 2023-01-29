@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../widgets/molecules/pokemon_basic_info_widget.dart';
+
+import '../../../../domain/entities/pokemon_entity.dart';
 import '../../../widgets/atoms/pokemon_image_widget.dart';
 import '../../../widgets/atoms/pokemon_name_widget.dart';
 import '../../../widgets/atoms/pokemon_type_widget.dart';
-
-import '../../../../domain/entities/pokemon_entity.dart';
 import '../../../widgets/tokens/app_colors.dart';
 import '../../../widgets/tokens/app_fonts.dart';
 import '../../pokemon_detail/pokemon_detail_screen.dart';
@@ -59,11 +58,11 @@ class PokemonCard extends StatelessWidget {
                         types: pokemonEntity.types,
                       ),
                       space,
-                      PokemonBasicInfoWidget(
-                        id: pokemonEntity.id,
-                        maxHP: pokemonEntity.maxHP,
-                        maxCP: pokemonEntity.maxCP,
-                      ),
+                      // PokemonBasicInfoWidget(
+                      //   id: pokemonEntity.id,
+                      //   maxHP: pokemonEntity.maxHP,
+                      //   maxCP: pokemonEntity.maxCP,
+                      // ),
                       space,
                       _extraInfoWidget(),
                     ],
@@ -94,22 +93,22 @@ class PokemonCard extends StatelessWidget {
             ),
           ],
         ),
-        Expanded(
-          child: Container(),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            _extraInfoItem(
-              'Generation:',
-              pokemonEntity.generation.toString(),
-            ),
-            _extraInfoItem(
-              'Candy:',
-              pokemonEntity.candy.toString(),
-            ),
-          ],
-        ),
+        // Expanded(
+        //   child: Container(),
+        // ),
+        // Column(
+        //   crossAxisAlignment: CrossAxisAlignment.end,
+        //   children: [
+        //     _extraInfoItem(
+        //       'Generation:',
+        //       pokemonEntity.generation.toString(),
+        //     ),
+        //     _extraInfoItem(
+        //       'Candy:',
+        //       pokemonEntity.candy.toString(),
+        //     ),
+        //   ],
+        // ),
       ],
     );
   }

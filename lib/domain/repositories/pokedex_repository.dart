@@ -5,7 +5,4 @@ abstract class PokedexRepository {
     required int limit,
     required int offset,
   });
-  Future<PokemonEntity> getPokemonById({
-    required String pokemonId,
-  });
 }

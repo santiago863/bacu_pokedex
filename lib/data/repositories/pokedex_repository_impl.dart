@@ -18,13 +18,4 @@ class PokedexRepositoryImpl implements PokedexRepository {
       offset: offset,
     );
   }
-
-  @override
-  Future<PokemonEntity> getPokemonById({
-    required String pokemonId,
-  }) async {
-    return await _pokedexService.getPokemonById(
-      pokemonId: pokemonId,
-    );
-  }
 }
