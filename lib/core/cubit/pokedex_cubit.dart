@@ -38,8 +38,6 @@ class PokedexCubit extends Cubit<PokedexState> {
               seconds: 5,
             ),
             (timer) async {
-              // print('offset = ${state.offset}');
-              // print('pokemons = ${state.pokemons.length}');
               await fetchPokedex();
             },
           ),
@@ -56,9 +54,10 @@ class PokedexCubit extends Cubit<PokedexState> {
       limit: Config.pokemonsLimitQuery,
       offset: state.offset,
     );
-    final List<PokemonEntity> pokemons = [];
+    List<PokemonEntity> pokemons = [];
     pokemons.addAll(state.pokemons);
     pokemons.addAll(newPokemons);
+    pokemons = pokemons.toSet().toList();
     emit(
       state.copyWith(
         status: PokedexStatus.success,

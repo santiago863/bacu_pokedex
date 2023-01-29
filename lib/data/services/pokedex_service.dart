@@ -55,20 +55,24 @@ class PokedexService implements PokedexRepository {
       '/pokemon-species/${pokemonModel.id}',
     );
     Map<String, dynamic> json = response.data;
-    pokemonModel = await getPokemonEvolutionChain(
-      evolutionChainUrl: json['evolution_chain']['url'],
-      pokemonModel: pokemonModel,
-    );
+    if (json['evolution_chain'] != null) {
+      pokemonModel = await getPokemonEvolutionChain(
+        evolutionChainUrl: json['evolution_chain']['url'],
+        pokemonModel: pokemonModel,
+      );
+    }
     pokemonModel = await getPokemonGeneration(
       generationUrl: json['generation']['url'],
       pokemonModel: pokemonModel,
     );
     return pokemonModel.copyWith(
-      description: json['flavor_text_entries'][13]['flavor_text'],
+      description: json['flavor_text_entries'].length > 0
+          ? json['flavor_text_entries'][0]['flavor_text']
+          : 'N/A',
       color: json['color']['name'],
       captureRate: json['capture_rate'],
       foundIn: json['habitat'] != null ? json['habitat']['name'] : 'N/A',
-      shape: json['shape']['name'],
+      shape: json['shape'] != null ? json['shape']['name'] : 'N/A',
       baby: json['is_baby'],
     );
   }
