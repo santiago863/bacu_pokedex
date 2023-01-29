@@ -14,7 +14,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PokedexCubit(),
+      create: (context) => PokedexCubit()..fetchPokedex(),
       child: MaterialApp(
         title: Config.appName,
         theme: ThemeData(

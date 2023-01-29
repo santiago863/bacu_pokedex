@@ -18,7 +18,6 @@ dependencies:
   flutter_shake_animated: ^0.0.5
   get_it: ^7.2.0
   google_fonts: ^4.0.1
-  infinite_scroll_pagination: ^3.2.0
   skeletons: ^0.0.3
 
 dev_dependencies:

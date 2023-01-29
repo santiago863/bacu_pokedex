@@ -9,6 +9,7 @@ enum PokedexStatus {
 
 class PokedexState {
   final PokedexStatus status;
+  final int offset;
   final List<PokemonEntity> pokemons;
   final List<PokemonEntity> pokemonsCompare;
   final List<PokemonEntity> pokemonsSearch;
@@ -16,6 +17,7 @@ class PokedexState {
 
   PokedexState({
     this.status = PokedexStatus.initial,
+    this.offset = 0,
     this.pokemons = const [],
     this.pokemonsCompare = const [],
     this.pokemonsSearch = const [],
@@ -24,6 +26,7 @@ class PokedexState {
 
   PokedexState copyWith({
     PokedexStatus? status,
+    int? offset,
     List<PokemonEntity>? pokemons,
     List<PokemonEntity>? pokemonsCompare,
     List<PokemonEntity>? pokemonsSearch,
@@ -31,6 +34,7 @@ class PokedexState {
   }) {
     return PokedexState(
       status: status ?? this.status,
+      offset: offset ?? this.offset,
       pokemons: pokemons ?? this.pokemons,
       pokemonsCompare: pokemonsCompare ?? this.pokemonsCompare,
       pokemonsSearch: pokemonsSearch ?? this.pokemonsSearch,

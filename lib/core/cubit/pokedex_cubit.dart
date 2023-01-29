@@ -15,23 +15,24 @@ class PokedexCubit extends Cubit<PokedexState> {
 
   final getIt = GetIt.instance;
 
-  Future<void> fetchPokedex({
-    required int offset,
-  }) async {
+  Future<void> fetchPokedex() async {
     emit(
       state.copyWith(
         status: PokedexStatus.loading,
       ),
     );
     final pokedexRepository = getIt<PokedexRepositoryImpl>();
-    final pokemons = await pokedexRepository.getAllPokemons(
+    final newPokemons = await pokedexRepository.getAllPokemons(
       limit: Config.pokemonsLimitQuery,
-      offset: offset,
+      offset: state.offset,
     );
+    final List<PokemonEntity> pokemons = [];
+    pokemons.addAll(state.pokemons + newPokemons);
     emit(
       state.copyWith(
         status: PokedexStatus.success,
         pokemons: pokemons,
+        offset: state.pokemons.length,
       ),
     );
   }
