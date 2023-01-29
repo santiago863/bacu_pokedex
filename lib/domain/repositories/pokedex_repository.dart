@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:pokedex/domain/entities/error_entity.dart';
+import '../entities/error_entity.dart';
 
 import '../entities/pokemon_entity.dart';
 

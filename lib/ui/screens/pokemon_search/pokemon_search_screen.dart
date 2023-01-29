@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'widgets/no_search_widget.dart';
+
 import '../../../core/cubit/pokedex_cubit.dart';
 import 'widgets/no_pokemons_search_widget.dart';
+import 'widgets/no_search_widget.dart';
 import 'widgets/pokemon_search_card.dart';
 import 'widgets/search_appbar.dart';
 

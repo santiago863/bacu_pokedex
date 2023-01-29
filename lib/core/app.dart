@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../ui/widgets/tokens/app_colors.dart';
+import 'config.dart';
 import 'cubit/pokedex_cubit.dart';
 import 'routes.dart';
-
-import 'config.dart';
 
 class App extends StatelessWidget {
   const App({

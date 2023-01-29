@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/cubit/pokedex_cubit.dart';
 import '../../../widgets/tokens/app_colors.dart';
 import '../../../widgets/tokens/app_fonts.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/core/cubit/pokedex_cubit.dart';
+import '../../../../core/cubit/pokedex_cubit.dart';
 
 import '../../../../domain/entities/pokemon_entity.dart';
 import '../../../widgets/atoms/pokemon_image_widget.dart';

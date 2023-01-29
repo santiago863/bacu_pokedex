@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'widgets/compare_button.dart';
-import 'widgets/pokemon_detail_card.dart';
-import 'widgets/pokemon_detail_item.dart';
-import '../../widgets/tokens/app_fonts.dart';
-import '../../../core/utils/extensions/list_extensions.dart';
 
+import '../../../core/utils/extensions/list_extensions.dart';
 import '../../../domain/entities/pokemon_entity.dart';
 import '../../widgets/atoms/pokemon_image_widget.dart';
 import '../../widgets/atoms/pokemon_name_widget.dart';
 import '../../widgets/atoms/pokemon_type_widget.dart';
 import '../../widgets/molecules/pokemon_basic_info_widget.dart';
 import '../../widgets/organism/basic_appbar.dart';
+import '../../widgets/tokens/app_fonts.dart';
+import 'widgets/compare_button.dart';
+import 'widgets/pokemon_detail_card.dart';
+import 'widgets/pokemon_detail_item.dart';
 
 class PokemonDetailScreen extends StatelessWidget {
   static const String route = '/pokemon-detail';
