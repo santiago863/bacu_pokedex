@@ -10,6 +10,9 @@ class PokemonEntity {
   final int stamina;
   final int attack;
   final int defence;
+  final int maxAttack;
+  final int maxDefence;
+  final int speed;
   final String? description;
   final String? color;
   final int? captureRate;
@@ -32,6 +35,9 @@ class PokemonEntity {
     required this.stamina,
     required this.attack,
     required this.defence,
+    required this.maxAttack,
+    required this.maxDefence,
+    required this.speed,
     this.description,
     this.color,
     this.captureRate,
