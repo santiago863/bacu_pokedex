@@ -20,7 +20,6 @@ class PokedexCubit extends Cubit<PokedexState> {
 
   Future<void> fetchPokedex() async {
     if (timer == null) {
-      print('Se creo el timer');
       timer = Timer.periodic(
         const Duration(
           seconds: 5,
@@ -32,7 +31,6 @@ class PokedexCubit extends Cubit<PokedexState> {
       );
     } else {
       if (state.offset >= 1250) {
-        print('Apago el timer');
         timer?.cancel();
       }
     }

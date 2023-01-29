@@ -69,6 +69,7 @@ class PokemonCard extends StatelessWidget {
                             id: pokemonEntity.id,
                             maxHP: pokemonEntity.stamina,
                             maxCP: pokemonEntity.maxAttack,
+                            fontSize: 10,
                           ),
                           space,
                           _extraInfoWidget(),

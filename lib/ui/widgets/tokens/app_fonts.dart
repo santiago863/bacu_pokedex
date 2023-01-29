@@ -10,7 +10,7 @@ abstract class AppFonts {
   );
   static final TextStyle subtitle = GoogleFonts.righteous(
     color: AppColors.black,
-    fontSize: 13,
+    fontSize: 10,
   );
   static final TextStyle body = GoogleFonts.comfortaa(
     color: AppColors.grey,
