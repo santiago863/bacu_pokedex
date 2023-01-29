@@ -16,33 +16,25 @@ class PokedexCubit extends Cubit<PokedexState> {
         );
 
   final getIt = GetIt.instance;
-  // late final Timer timer;
-
-  // void initCubit() {
-  // timer = Timer.periodic(
-  //   const Duration(
-  //     seconds: 10,
-  //   ),
-  //   (timer) async => await fetchPokedex(),
-  // );
-  // }
+  Timer? timer;
 
   Future<void> fetchPokedex() async {
-    print('Consulto: offset = ${state.offset}');
-    if (state.timer == null) {
+    if (timer == null) {
       print('Se creo el timer');
-      emit(
-        state.copyWith(
-          timer: Timer.periodic(
-            const Duration(
-              seconds: 5,
-            ),
-            (timer) async {
-              await fetchPokedex();
-            },
-          ),
+      timer = Timer.periodic(
+        const Duration(
+          seconds: 5,
         ),
+        (timer) async {
+          print('offset = ${state.offset}');
+          await fetchPokedex();
+        },
       );
+    } else {
+      if (state.offset >= 1250) {
+        print('Apago el timer');
+        timer?.cancel();
+      }
     }
     emit(
       state.copyWith(
@@ -50,20 +42,25 @@ class PokedexCubit extends Cubit<PokedexState> {
       ),
     );
     final pokedexRepository = getIt<PokedexRepositoryImpl>();
-    final newPokemons = await pokedexRepository.getAllPokemons(
+    final responsePpkemons = await pokedexRepository.getAllPokemons(
       limit: Config.pokemonsLimitQuery,
       offset: state.offset,
     );
     List<PokemonEntity> pokemons = [];
     pokemons.addAll(state.pokemons);
-    pokemons.addAll(newPokemons);
-    pokemons = pokemons.toSet().toList();
-    emit(
-      state.copyWith(
-        status: PokedexStatus.success,
-        pokemons: pokemons,
-        offset: pokemons.length,
-      ),
+    responsePpkemons.fold(
+      (l) => null,
+      (r) {
+        pokemons.addAll(r);
+        pokemons = pokemons.toSet().toList();
+        emit(
+          state.copyWith(
+            status: PokedexStatus.success,
+            pokemons: pokemons,
+            offset: pokemons.length,
+          ),
+        );
+      },
     );
   }
 

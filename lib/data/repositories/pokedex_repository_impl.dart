@@ -1,3 +1,6 @@
+import 'package:dartz/dartz.dart';
+
+import '../../domain/entities/error_entity.dart';
 import '../../domain/entities/pokemon_entity.dart';
 import '../../domain/repositories/pokedex_repository.dart';
 import '../services/pokedex_service.dart';
@@ -9,7 +12,7 @@ class PokedexRepositoryImpl implements PokedexRepository {
   );
 
   @override
-  Future<List<PokemonEntity>> getAllPokemons({
+  Future<Either<ErrorEntity, List<PokemonEntity>>> getAllPokemons({
     required int limit,
     required int offset,
   }) async {
