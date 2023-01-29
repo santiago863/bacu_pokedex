@@ -4,9 +4,11 @@ import '../tokens/app_fonts.dart';
 
 class PokemonNameWidget extends StatelessWidget {
   final String name;
+  final double? fontSize;
   const PokemonNameWidget({
     super.key,
     required this.name,
+    this.fontSize,
   });
 
   @override
@@ -15,8 +17,10 @@ class PokemonNameWidget extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         name.toUpperCase(),
-        style: AppFonts.title,
         textAlign: TextAlign.left,
+        style: AppFonts.title.copyWith(
+          fontSize: fontSize,
+        ),
       ),
     );
   }

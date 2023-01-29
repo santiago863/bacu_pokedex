@@ -7,11 +7,13 @@ class PokemonBasicInfoWidget extends StatelessWidget {
   final int id;
   final int maxHP;
   final int maxCP;
+  final double? fontSize;
   const PokemonBasicInfoWidget({
     super.key,
     required this.id,
     required this.maxHP,
     required this.maxCP,
+    this.fontSize,
   });
 
   @override
@@ -31,33 +33,39 @@ class PokemonBasicInfoWidget extends StatelessWidget {
         children: [
           Text(
             '#$id',
-            style: AppFonts.subtitle,
+            style: AppFonts.subtitle.copyWith(
+              fontSize: fontSize,
+            ),
           ),
           Text(
             'MAX HP',
-            style: AppFonts.body,
+            style: AppFonts.body.copyWith(
+              fontSize: fontSize,
+            ),
           ),
           _circleText(
-            AppColors.secondary,
-            '$maxHP hp',
+            color: AppColors.secondary,
+            text: '$maxHP hp',
           ),
           Text(
             'MAX CP',
-            style: AppFonts.body,
+            style: AppFonts.body.copyWith(
+              fontSize: fontSize,
+            ),
           ),
           _circleText(
-            AppColors.tertiary,
-            'cp $maxCP',
+            color: AppColors.tertiary,
+            text: 'cp $maxCP',
           ),
         ],
       ),
     );
   }
 
-  Widget _circleText(
-    Color color,
-    String text,
-  ) {
+  Widget _circleText({
+    required Color color,
+    required String text,
+  }) {
     return Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
@@ -66,7 +74,9 @@ class PokemonBasicInfoWidget extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: AppFonts.subtitle,
+        style: AppFonts.subtitle.copyWith(
+          fontSize: fontSize,
+        ),
       ),
     );
   }

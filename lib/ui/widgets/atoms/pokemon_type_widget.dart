@@ -4,9 +4,11 @@ import '../tokens/app_fonts.dart';
 
 class PokemonTypeWidget extends StatelessWidget {
   final List<dynamic> types;
+  final double? fontSize;
   const PokemonTypeWidget({
     super.key,
     required this.types,
+    this.fontSize,
   });
 
   @override
@@ -23,7 +25,9 @@ class PokemonTypeWidget extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         typeText.toUpperCase(),
-        style: AppFonts.subtitle,
+        style: AppFonts.subtitle.copyWith(
+          fontSize: fontSize,
+        ),
       ),
     );
   }
