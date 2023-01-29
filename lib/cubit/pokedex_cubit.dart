@@ -35,4 +35,54 @@ class PokedexCubit extends Cubit<PokedexState> {
       ),
     );
   }
+
+  void addToCompare({
+    required PokemonEntity pokemonEntity,
+  }) {
+    emit(
+      state.copyWith(
+        status: PokedexStatus.loading,
+      ),
+    );
+    if (state.pokemonsCompare.contains(pokemonEntity)) {
+      List<PokemonEntity> pokemons = state.pokemonsCompare;
+      pokemons.add(pokemonEntity);
+      emit(
+        state.copyWith(
+          status: PokedexStatus.success,
+          pokemonsCompare: pokemons,
+        ),
+      );
+    }
+    emit(
+      state.copyWith(
+        status: PokedexStatus.success,
+      ),
+    );
+  }
+
+  void removeToCompare({
+    required PokemonEntity pokemonEntity,
+  }) {
+    emit(
+      state.copyWith(
+        status: PokedexStatus.loading,
+      ),
+    );
+    if (state.pokemonsCompare.contains(pokemonEntity)) {
+      List<PokemonEntity> pokemons = state.pokemonsCompare;
+      pokemons.remove(pokemonEntity);
+      emit(
+        state.copyWith(
+          status: PokedexStatus.success,
+          pokemonsCompare: pokemons,
+        ),
+      );
+    }
+    emit(
+      state.copyWith(
+        status: PokedexStatus.success,
+      ),
+    );
+  }
 }
