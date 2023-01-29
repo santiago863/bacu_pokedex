@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/utils/extensions/string_extension.dart';
+import '../../../../core/extensions/string_extension.dart';
 
 import '../../../widgets/tokens/app_fonts.dart';
 

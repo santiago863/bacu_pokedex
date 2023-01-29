@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/domain/entities/pokemon_entity.dart';
-import 'package:pokedex/ui/screens/pokemon_compare/pokemon_compare_screen.dart';
-import 'package:pokedex/ui/widgets/tokens/app_colors.dart';
-import 'package:pokedex/ui/widgets/tokens/app_fonts.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../domain/entities/pokemon_entity.dart';
+import '../../pokemon_compare/pokemon_compare_screen.dart';
+import '../../../widgets/atoms/button_widget.dart';
+import '../../../widgets/tokens/app_colors.dart';
+import '../../../widgets/tokens/app_fonts.dart';
+
+import '../../../../core/cubit/pokedex_cubit.dart';
 
 class CompareButton extends StatelessWidget {
   final PokemonEntity pokemonEntity;
@@ -13,32 +17,32 @@ class CompareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return ButtonWidget(
+      fullWidth: true,
+      text: 'Compare',
       onTap: () {
-        Navigator.of(context).pushNamed(
-          PokemonCompareScreen.route,
+        context.read<PokedexCubit>().addToCompare(
+              pokemonEntity: pokemonEntity,
+            );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: AppColors.primary,
+            content: Text(
+              'Has been added to compare',
+              style: AppFonts.subtitle,
+            ),
+            action: SnackBarAction(
+              label: 'View',
+              textColor: AppColors.black,
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  PokemonCompareScreen.route,
+                );
+              },
+            ),
+          ),
         );
       },
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(
-          vertical: 10,
-          horizontal: 15,
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.primary,
-          borderRadius: BorderRadius.circular(
-            30,
-          ),
-        ),
-        child: Text(
-          'Compare',
-          style: AppFonts.subtitle.copyWith(
-            fontSize: 20,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ),
     );
   }
 }

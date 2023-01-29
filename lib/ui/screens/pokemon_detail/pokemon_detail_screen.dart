@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/ui/screens/pokemon_detail/widgets/compare_button.dart';
-import 'package:pokedex/ui/screens/pokemon_detail/widgets/pokemon_detail_card.dart';
-import 'package:pokedex/ui/screens/pokemon_detail/widgets/pokemon_detail_item.dart';
-import 'package:pokedex/ui/widgets/tokens/app_fonts.dart';
-import 'package:pokedex/utils/extensions/list_extensions.dart';
+import 'widgets/compare_button.dart';
+import 'widgets/pokemon_detail_card.dart';
+import 'widgets/pokemon_detail_item.dart';
+import '../../widgets/tokens/app_fonts.dart';
+import '../../../core/extensions/list_extensions.dart';
 
 import '../../../domain/entities/pokemon_entity.dart';
 import '../../widgets/atoms/pokemon_image_widget.dart';

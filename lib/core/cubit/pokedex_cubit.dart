@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:get_it/get_it.dart';
 
-import '../core/config.dart';
-import '../data/repositories/pokedex_repository_impl.dart';
-import '../domain/entities/pokemon_entity.dart';
+import '../../data/repositories/pokedex_repository_impl.dart';
+import '../../domain/entities/pokemon_entity.dart';
+import '../config.dart';
 
 part 'pokedex_state.dart';
 
@@ -44,12 +44,14 @@ class PokedexCubit extends Cubit<PokedexState> {
         status: PokedexStatus.loading,
       ),
     );
-    if (state.pokemonsCompare.contains(pokemonEntity)) {
-      List<PokemonEntity> pokemons = state.pokemonsCompare;
+    if (!state.pokemonsCompare.contains(pokemonEntity)) {
+      List<PokemonEntity> pokemons = [];
+      pokemons.addAll(
+        state.pokemonsCompare,
+      );
       pokemons.add(pokemonEntity);
       emit(
         state.copyWith(
-          status: PokedexStatus.success,
           pokemonsCompare: pokemons,
         ),
       );
@@ -70,11 +72,13 @@ class PokedexCubit extends Cubit<PokedexState> {
       ),
     );
     if (state.pokemonsCompare.contains(pokemonEntity)) {
-      List<PokemonEntity> pokemons = state.pokemonsCompare;
+      List<PokemonEntity> pokemons = [];
+      pokemons.addAll(
+        state.pokemonsCompare,
+      );
       pokemons.remove(pokemonEntity);
       emit(
         state.copyWith(
-          status: PokedexStatus.success,
           pokemonsCompare: pokemons,
         ),
       );

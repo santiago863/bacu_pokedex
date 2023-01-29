@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../ui/widgets/tokens/app_colors.dart';
+import 'cubit/pokedex_cubit.dart';
 import 'routes.dart';
-import '../cubit/pokedex_cubit.dart';
 
 import 'config.dart';
 

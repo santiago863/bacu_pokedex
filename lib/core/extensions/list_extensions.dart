@@ -1,4 +1,4 @@
-import 'package:pokedex/utils/extensions/string_extension.dart';
+import 'string_extension.dart';
 
 extension ListExtension on List<dynamic> {
   String toListItems() {

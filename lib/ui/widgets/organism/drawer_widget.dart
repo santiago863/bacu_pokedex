@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/ui/screens/pokemon_compare/pokemon_compare_screen.dart';
+import '../../screens/pokemon_compare/pokemon_compare_screen.dart';
 
 import '../../../core/config.dart';
 import '../../screens/pokemon_search/pokemon_search_screen.dart';
