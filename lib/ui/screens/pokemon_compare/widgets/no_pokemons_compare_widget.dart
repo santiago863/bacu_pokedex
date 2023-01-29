@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../widgets/atoms/button_widget.dart';
 import '../../../widgets/tokens/app_fonts.dart';
 
-class NoPokemonsWidget extends StatelessWidget {
-  const NoPokemonsWidget({
+class NoPokemonsCompareWidget extends StatelessWidget {
+  const NoPokemonsCompareWidget({
     super.key,
   });
 
@@ -40,7 +40,7 @@ class NoPokemonsWidget extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pop();
             },
-          )
+          ),
         ],
       ),
     );

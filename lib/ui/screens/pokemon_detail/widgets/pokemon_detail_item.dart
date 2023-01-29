@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../core/extensions/string_extension.dart';
 
+import '../../../../core/utils/extensions/string_extension.dart';
 import '../../../widgets/tokens/app_fonts.dart';
 
 class PokemonDetailItem extends StatelessWidget {

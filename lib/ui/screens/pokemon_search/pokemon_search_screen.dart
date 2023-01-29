@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'widgets/no_search_widget.dart';
+import '../../../core/cubit/pokedex_cubit.dart';
+import 'widgets/no_pokemons_search_widget.dart';
+import 'widgets/pokemon_search_card.dart';
 import 'widgets/search_appbar.dart';
 
 class PokemonSearchScreen extends StatelessWidget {
@@ -9,10 +14,27 @@ class PokemonSearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: SearchAppbar(
-        onTap: (searchText) {},
-      ),
+    return BlocBuilder<PokedexCubit, PokedexState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: const SearchAppbar(),
+          body: SingleChildScrollView(
+            child: state.query.length < 3
+                ? const NoSearchWidget()
+                : state.pokemonsSearch.isEmpty
+                    ? const NoPokemonsSearchWidget()
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: state.pokemonsSearch.length,
+                        itemBuilder: (context, index) {
+                          return PokemonSearchCard(
+                            pokemonEntity: state.pokemonsSearch[index],
+                          );
+                        },
+                      ),
+          ),
+        );
+      },
     );
   }
 }

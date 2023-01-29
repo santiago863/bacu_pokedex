@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../screens/pokemon_compare/pokemon_compare_screen.dart';
 
 import '../../../core/config.dart';
+import '../../screens/pokemon_compare/pokemon_compare_screen.dart';
 import '../../screens/pokemon_search/pokemon_search_screen.dart';
 import '../atoms/drawer_tile.dart';
 import '../tokens/app_colors.dart';

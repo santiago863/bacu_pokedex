@@ -89,4 +89,24 @@ class PokedexCubit extends Cubit<PokedexState> {
       ),
     );
   }
+
+  void searchPokemon(String query) {
+    emit(
+      state.copyWith(
+        status: PokedexStatus.loading,
+        query: query,
+      ),
+    );
+    List<PokemonEntity> pokemons = state.pokemons
+        .where(
+          (p) => p.name.contains(query),
+        )
+        .toList();
+    emit(
+      state.copyWith(
+        status: PokedexStatus.success,
+        pokemonsSearch: pokemons,
+      ),
+    );
+  }
 }

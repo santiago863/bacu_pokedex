@@ -3,7 +3,7 @@ import 'widgets/compare_button.dart';
 import 'widgets/pokemon_detail_card.dart';
 import 'widgets/pokemon_detail_item.dart';
 import '../../widgets/tokens/app_fonts.dart';
-import '../../../core/extensions/list_extensions.dart';
+import '../../../core/utils/extensions/list_extensions.dart';
 
 import '../../../domain/entities/pokemon_entity.dart';
 import '../../widgets/atoms/pokemon_image_widget.dart';

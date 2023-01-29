@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'widgets/no_pokemons_widget.dart';
+import 'widgets/no_pokemons_compare_widget.dart';
 import 'widgets/pokemon_compare_card.dart';
 import '../../widgets/organism/basic_appbar.dart';
 
@@ -22,7 +22,7 @@ class PokemonCompareScreen extends StatelessWidget {
         child: BlocBuilder<PokedexCubit, PokedexState>(
           builder: (context, state) {
             if (state.pokemonsCompare.isEmpty) {
-              return const NoPokemonsWidget();
+              return const NoPokemonsCompareWidget();
             } else {
               return ListView.builder(
                 shrinkWrap: true,
