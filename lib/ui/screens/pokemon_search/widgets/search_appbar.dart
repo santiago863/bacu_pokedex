@@ -43,9 +43,7 @@ class SearchAppbar extends StatelessWidget implements PreferredSizeWidget {
               ),
               TextFormField(
                 onChanged: (query) {
-                  if (query.length > 1) {
-                    context.read<PokedexCubit>().searchPokemon(query);
-                  }
+                  context.read<PokedexCubit>().searchPokemon(query);
                 },
               ),
             ],

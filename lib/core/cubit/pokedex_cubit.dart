@@ -22,7 +22,7 @@ class PokedexCubit extends Cubit<PokedexState> {
     if (timer == null) {
       timer = Timer.periodic(
         const Duration(
-          seconds: 5,
+          seconds: 4,
         ),
         (timer) async {
           if (state.offset != 0) {
@@ -125,22 +125,31 @@ class PokedexCubit extends Cubit<PokedexState> {
   }
 
   void searchPokemon(String query) {
-    emit(
-      state.copyWith(
-        status: PokedexStatus.loading,
-        query: query,
-      ),
-    );
-    List<PokemonEntity> pokemons = state.pokemons
-        .where(
-          (p) => p.name.contains(query),
-        )
-        .toList();
-    emit(
-      state.copyWith(
-        status: PokedexStatus.success,
-        pokemonsSearch: pokemons,
-      ),
-    );
+    if (query.length > 1) {
+      emit(
+        state.copyWith(
+          status: PokedexStatus.loading,
+          query: query,
+        ),
+      );
+      List<PokemonEntity> pokemons = state.pokemons
+          .where(
+            (p) => p.name.contains(query),
+          )
+          .toList();
+      emit(
+        state.copyWith(
+          status: PokedexStatus.success,
+          pokemonsSearch: pokemons,
+        ),
+      );
+    } else {
+      emit(
+        state.copyWith(
+          status: PokedexStatus.success,
+          pokemonsSearch: [],
+        ),
+      );
+    }
   }
 }

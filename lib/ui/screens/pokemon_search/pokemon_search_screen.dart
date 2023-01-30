@@ -20,7 +20,7 @@ class PokemonSearchScreen extends StatelessWidget {
         return Scaffold(
           appBar: const SearchAppbar(),
           body: SingleChildScrollView(
-            child: state.query.length < 3
+            child: state.query.length < 2
                 ? const NoSearchWidget()
                 : state.pokemonsSearch.isEmpty
                     ? const NoPokemonsSearchWidget()
